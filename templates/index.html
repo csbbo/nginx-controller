@@ -22,7 +22,7 @@
         </select>
     </div>
     <br><br>
-    <label for="name">算法套件</label>
+    <label for="algorithm">算法套件</label>
     <div>
         <label class="checkbox-inline">
             <input type="checkbox" id="inlineCheckbox1" value="option1">3DES
@@ -49,12 +49,29 @@
         <br>
         <button id="submit">确定</button>
     </div>
+
+    <br><br>
+    <label for="cache">缓存</label>
+    <div class="maxcache">最大缓存(1~1000G):<input id="maxcache" name="value" type="text"></div>
+    <div class="maxalive">最大存活时间(1~1000m):<input id="maxalive" name="value" type="text"></div>
+
+    <br><br>
+    <label for="port">监听端口</label>
+    <input id="port" name="port" type="text" value="80">
+
+    <br><br>
+    <label for="url">客户站点地址</label>
+    <input id="url" name="url" type="url">
+
+    <br><br>
+    <button id="submit2">更新配置</button>
+
       
     
     <script>
     $(function(){
         var url = "http://127.0.0.1:5000"
-        $("#select").change(function(){
+        $("#select").change(function(){ //TLS版本选择
             var opt=$("#select").val(); //获取选中的项
             $.post(url+"/tls/",{
                 version: opt
@@ -62,7 +79,7 @@
             function(data,status){
             });
         });
-        $("#submit").click(function(){
+        $("#submit").click(function(){ //加密套件选择
             $.post(url+"/algorithm/",{
                 alm1: $('#inlineCheckbox1').is(':checked'),
                 alm2: $('#inlineCheckbox2').is(':checked'),
@@ -109,6 +126,17 @@
                 console.log("请求失败!!!")
             }
 		});
+
+        var maxcache=$("#maxcache").val();
+        var maxalive=$("#maxalive").val();
+        var port=$("#port").val();
+        var url=$("#url").val();
+        $("#submit2").click(function(){ //加密套件选择
+            alert(maxcache)
+            alert(maxalive)
+            alert(port)
+            alert(url)
+        })
     });
     </script>
 

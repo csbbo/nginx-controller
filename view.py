@@ -63,5 +63,34 @@ def algorithm():
     os.system(cmd)
     return redirect(url_for('index'))
 
+
+@app.route('/maxcache/', methods=['POST'])
+def maxcache():
+    value = request.form.get('value')
+    if value:
+        print(value)
+    return redirect(url_for('index'))
+
+@app.route('/activetime/', methods=['POST'])
+def activetime():
+    value = request.form.get('value')
+    if value:
+        print(value)
+    return redirect(url_for('index'))
+
+@app.route('/listenport/', methods=['POST'])
+def listenport():
+    port = request.form.get('port')
+    if port:
+        print(port)
+    return redirect(url_for('index'))
+
+@app.route('/clienturl/', methods=['POST'])
+def clienturl():
+    url = request.form.get('url')
+    if url:
+        print(url)
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run(debug=True)
